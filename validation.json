@@ -1,0 +1,7 @@
+{
+    "checks": [
+        "Have you changed the database credentials?",
+        "Have you changed the URLs to production?"
+    ],
+    "build-script": "echo change the build-script value in validation.json to the desired build command."
+}

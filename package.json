@@ -1,0 +1,11 @@
+{
+  "name": "custom-build-validator",
+  "version": "1.0.0",
+  "description": "A custom validation script to run before building any project for deployment",
+  "main": "validate.js",
+  "scripts": {
+    "start-build": "node validate.js"
+  },
+  "author": "VaibhavJoshi",
+  "license": "MIT"
+}
