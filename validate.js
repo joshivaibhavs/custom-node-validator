@@ -21,34 +21,33 @@ const launch = async () => {
         console.log('build-script is not defined as string.')
         process.exit()
     }
-    if (Array.isArray(scripts.checks)) {
-        if (!scripts.checks.every(i => typeof (i) == 'string')) {
-            console.log('checks should only contain strings.')
-            process.exit()
-        }
-        for (var q of scripts.checks) {
-            const answer = await readInput(`${q} [y/N]`)
-            if (answer.toLowerCase() != 'y') {
-                console.log('Please take necessary actions before I run the build command.')
-                process.exit()
-            }
-        }
-        try {
-            const {err, stdout, stderr} = await exec(scripts['build-script'])
-            if (stderr) {
-                console.log('Error!')
-                console.log(stderr)
-                process.exit()
-            }
-            console.log(stdout)
-            process.exit()
-        } catch (err) {
-            console.log('Error!')
-            console.log(err.message)
-            process.exit()
-        }
-    } else {
+    if (!Array.isArray(scripts.checks)) {
         console.log('checks should be an array of strings.')
+        process.exit()
+    }
+    if (!scripts.checks.every(i => typeof (i) == 'string')) {
+        console.log('checks should only contain strings.')
+        process.exit()
+    }
+    for (var q of scripts.checks) {
+        const answer = await readInput(`${q} [y/N]`)
+        if (answer.toLowerCase() != 'y') {
+            console.log('Please take necessary actions before I run the build command.')
+            process.exit()
+        }
+    }
+    try {
+        const { err, stdout, stderr } = await exec(scripts['build-script'])
+        if (stderr) {
+            console.log('Error!')
+            console.log(stderr)
+            process.exit()
+        }
+        console.log(stdout)
+        process.exit()
+    } catch (err) {
+        console.log('Error!')
+        console.log(err.message)
         process.exit()
     }
 }
