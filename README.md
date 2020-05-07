@@ -3,7 +3,7 @@ A customizable validator CL script to confirm a checklist before running a deplo
 
 `validation.json` to be changed as required.
 
-`checks contains` the questions to be asked.
+`checks` contains the questions to be asked.
 
 `build-script` is the final script to run (e.g. `vue-cli-service build` for a vue.js project)
 
